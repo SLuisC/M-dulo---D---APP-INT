@@ -17,13 +17,13 @@ model User {
   status       MasterStatus? @relation(fields: [statusId], references: [id])
   userRoles    UserRole[]
   auditLogs    AuditLog[]
-  
+
   // RELACIONES INVERSAS AGREGADAS:
-  carts        Cart[]
-  orders       Order[]
-  
-  createdAt    DateTime      @default(now()) @map("created_at")
-  updatedAt    DateTime      @updatedAt @map("updated_at")
+  carts  Cart[]
+  orders Order[]
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
 
   @@map("users")
 }
@@ -123,7 +123,7 @@ model AuditLog {
 
 model Cart {
   id        String     @id @default(uuid())
-  userId    String     @map("user_id")
+  userId    String     @unique @map("user_id") // <--- Añade @unique aquí
   user      User       @relation(fields: [userId], references: [id], onDelete: Cascade)
   items     CartItem[]
   createdAt DateTime   @default(now()) @map("created_at")

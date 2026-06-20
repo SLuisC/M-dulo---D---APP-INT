@@ -9,6 +9,8 @@ import { SettingsModule } from './modules/settings/settings.module';
 import { StatusesModule } from './modules/statuses/statuses.module';
 import { AuditModule } from './modules/audit/audit.module';
 import { HealthModule } from './modules/health/health.module';
+// 1. Importamos el nuevo módulo
+import { CartModule } from './modules/cart/cart.module';
 
 @Module({
   imports: [
@@ -21,6 +23,8 @@ import { HealthModule } from './modules/health/health.module';
     StatusesModule,
     AuditModule,
     HealthModule,
+    // 2. Lo registramos en la aplicación
+    CartModule,
   ],
 })
 export class AppModule {}
